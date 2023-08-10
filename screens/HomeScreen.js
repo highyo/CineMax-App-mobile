@@ -10,11 +10,14 @@ import { TouchableOpacity } from "react-native";
 import { stylesCine } from "../theme";
 import { ScrollView } from "react-native";
 import TrendingMovies from "../components/trendingMovies";
+import MovieList from "../navigation/movieList";
 
 const ios = Platform.OS == "ios";
 
 const HomeScreen = () => {
   const [trending, setTrending] = useState([1, 2, 3]);
+  const [upcoming, setUpcoming] = useState([1, 2, 3]);
+  const [toprated, setToprated] = useState([1, 2, 3]);
   return (
     <View style={styles.container}>
       <SafeAreaView style={ios ? { marginBottom: -2 } : { marginBottom: 3 }}>
@@ -35,8 +38,12 @@ const HomeScreen = () => {
       >
         {/* Trending movies carousel */}
         <TrendingMovies data={trending} />
+        {/* Upcoming movies row */}
+        <MovieList title="Upcoming" data={upcoming} />
+        {/* Top rated movies row */}
+        <MovieList title="Top Rated" data={toprated} />
       </ScrollView>
-      <Text style={styles.title}>HomeScreen</Text>
+      {/* <Text style={styles.title}>HomeScreen</Text> */}
     </View>
   );
 };
